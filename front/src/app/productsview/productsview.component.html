@@ -1,0 +1,25 @@
+
+<mat-spinner  class="spinner" *ngIf="loading"></mat-spinner>
+<p class="text-center" *ngIf="stuff.length <= 0 && !loading">Rien à vendre !</p>
+<div class="stuff-grid" *ngIf="stuff.length >= 0">
+
+  <div class="thing-pane"
+
+       *ngFor="let thing of stuff"
+       [ngStyle]="{'background-image': 'url(' + thing.imageUrl + ')'}">
+
+    <div class="thing-info">
+      <p> id : {{thing._id }}</p>
+      <h3>
+        {{ thing.name }}
+      </h3>
+      <h5>{{ thing.price / 100 | currency:'EUR' }}</h5>
+      <a routerLink="/product/{{thing._id}}" aria-label="icon button with a plus one icon" class="add-button" mat-raised-button color="accent">
+        Details...
+      </a>
+    </div>
+
+
+  </div>
+
+</div>

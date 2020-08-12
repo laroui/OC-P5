@@ -1,0 +1,39 @@
+
+<main class="main">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-title">
+
+
+      <p class="h7">Une sélection de matériel et d'accessoire pour photographe.</p>
+    </div>
+    <img src="./assets/img/orinoco-logo-tp.png" class="banner-img" height="100" alt="Oricono est un site de vente en ligne proposant une sélection de matériel et d'accessoire pour photographe.">
+  </div>
+
+  <!-- ORDER CONFIRMATION -->
+  <section>
+    <div class="order-confirm">
+      <h2>L'équipe d'Oricono vous remerci pour votre commande !</h2>
+      <div class="order-confirm_text">
+        <h3>Votre commande a bien été validée</h3>
+        <p>Votre commande d'un montant de <span class="font-weight-bold">{{totalprice.valueOf()}}</span> a bien été validée.<br>
+        <p>numéro de commande : <span class="font-weight-bold ">{{ orderId.toString()  }}</span></p>
+        <p>
+          Toute l'équipe vous remercie pour votre confiance ; nous restons à votre disposition en cas de besoin.
+        </p>
+
+        <button class="btn" id="btn-return-home" (click)="clear()" aria-label="Retourner vers la page d'accueil d'Oricono">Revenir à l'accueil
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <span class="end-text_confirm">L'équipe d'Oricono vous remercie pour votre confiance !</span>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Copyright © 2020 - Oricono</p>
+  </footer>
+
+</main>

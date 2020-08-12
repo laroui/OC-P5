@@ -1,0 +1,87 @@
+
+
+<mat-spinner  class="spinner" *ngIf="loading"></mat-spinner>
+<p class="text-center" *ngIf="products.length <= 0 && !loading">Votre panier est vide</p>
+<div class="stuff-grid" *ngIf="products.length > 0">
+
+  <div class="left-side" [hidden]="products.length <1 ">
+    <h2>Récapitulatif de la commande </h2>
+    <table>
+      <thead>
+      <tr>
+        <th><mat-icon>camera_enhance</mat-icon></th>
+        <th>Produit</th>
+        <th><mat-icon>euro_symbol</mat-icon></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let thing of products;  let i = index">
+        <td> <img [src]="thing?.imageUrl" alt=" image du produit {{thing.name}}" height="30px" width="30px"> </td>
+        <td>{{thing.name}}</td>
+        <td> {{ thing.price / 100 | currency:'EUR' }} </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td></td>
+        <td>Total à payer</td>
+        <td> <span class="total-price"> {{getTotal() }}€</span>  </td>
+      </tr>
+      </tfoot>
+
+
+
+
+
+    </table>
+
+
+  </div>
+
+
+
+
+
+  <div class="right-side"  >
+    <form [formGroup]="contact" (ngSubmit)="onSubmit()" novalidate >
+      <label for="lastname">Nom</label>
+      <input type="text" formControlName="lastname" id="lastname"/>
+      <div *ngIf="lastname.touched && !lastname.valid">Required</div>
+
+      <label for="firstname">Prénom</label>
+      <input type="text" formControlName="firstname" id="firstname"/>
+      <div *ngIf="firstname.touched && !firstname.valid">Required</div>
+
+      <label for="email">Email</label>
+      <input formControlName="email" id="email"/>
+      <div *ngIf="email.touched &&!email.valid">Invalid</div>
+
+      <label for="adresse">Adresse</label>
+      <input formControlName="adresse" id="adresse"/>
+      <div *ngIf="adresse.touched && !adresse.valid ">Invalide</div>
+
+      <label for="ville">Ville</label>
+      <input formControlName="ville" id="ville"/>
+      <div *ngIf="ville.touched && !ville.value ">Invalide</div>
+
+
+
+      <button class=" btn btn-success" type="submit" [disabled]="!contact.valid">Procéder au paiement</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+

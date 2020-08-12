@@ -1,0 +1,53 @@
+
+.spinner{
+  margin: 0 auto;
+}
+.stuff-grid {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-items:center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.thing-pane {
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  width: 270px;
+  height: 270px;
+  margin: 25px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 1px 1px 3px hsla(0, 0%, 93%, 0.57);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.thing-info {
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  background-color: hsla(0, 0%, 26%, 0.7);
+  color: white;
+  padding: 10px;
+  h3 {
+    font-weight: 800;
+  }
+  h5 {
+    color: #6eb5ff;
+  }
+}
+
+.add-button{
+  color:#FFF;
+  background-color:dimgrey;
+}
+.add-button :hover{
+   color: gold;
+
+}

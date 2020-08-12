@@ -1,0 +1,16 @@
+<div class="spacer"></div>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <div class="single-thing-pane">
+    <img [src]="thing?.imageUrl" alt=" image du produit {{thing.name}}">
+    <div class="single-thing-info">
+      <h1>{{ thing?.title }}</h1>
+      <p>{{ thing?.description }}</p>
+      <h2 class="single-thing-price">{{ thing?.price / 100 | currency:'EUR' }}</h2>
+
+      <button mat-raised-button primary (click)="addToCart(thing)"> Ajouter au panier </button>
+
+
+    </div>
+  </div>
+</div>
