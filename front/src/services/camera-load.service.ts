@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CameraModel } from '../models/camera.model';
 import { HttpClient } from '@angular/common/http';
-
+import {environment} from '../environments/environment.prod'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class cameraLoadService {
-
+  private baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) {}
 
   private stuff: CameraModel[] = [
@@ -21,7 +21,7 @@ export class cameraLoadService {
   }
 
   getStuff () {
-    this.http.get('http://localhost:3000/api/cameras').subscribe(
+    this.http.get(this.baseUrl).subscribe(
       (stuff: CameraModel[]) => {
         if (stuff) {
           this.stuff = stuff;
@@ -40,7 +40,7 @@ export class cameraLoadService {
   }
   getThingById(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/api/cameras/' + id).subscribe(
+      this.http.get(this.baseUrl + id).subscribe(
         (response) => {
           resolve(response);
         },

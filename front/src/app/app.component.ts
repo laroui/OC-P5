@@ -7,7 +7,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class AppComponent  implements OnDestroy , OnInit{
 ngOnInit() {
-  sessionStorage.clear();
 }
 
   ngOnDestroy() {
