@@ -1,0 +1,7 @@
+      <p>Form value: {{ lastname.status | json }}</p>
+      <p>Form value: {{ firstname.status | json }}</p>
+      <p>Form value: {{ ville.status | json }}</p>
+      <p>Form value: {{ email.status | json }}</p>
+      <p>Form value: {{ adresse.status | json }}</p>
+      <p>Form value: {{ contact.value | json }}</p>
+      <p>Form status: {{ contact.status | json }}</p>
