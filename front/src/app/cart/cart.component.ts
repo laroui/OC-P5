@@ -78,8 +78,7 @@ products =this.cartService.items;
       p.push(r);
     }
 
-
-    //contact componenent to match API naming
+    //contactz componenent to match API naming
 
     let contactz = { // contact {string}
       "lastName": this.lastname.value ,
@@ -91,11 +90,13 @@ products =this.cartService.items;
 
 
     let myObj = { "contact":contactz, "products":p };
-;
+
 
     this.http.post(api_URL,myObj).toPromise().then((data:any) =>{
-      localStorage.setItem('orderid',data.orderId)
-      localStorage.setItem('totalprice', (price/100).toString())
+      this.cartService.totalprice=price;
+      this.cartService.orderId=data.orderId.toString();
+      sessionStorage.setItem('data',data.orderId.toString())
+      sessionStorage.setItem('totalprice', price.toString())
     })
 
 

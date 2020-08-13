@@ -2,13 +2,18 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
   <div class="single-thing-pane">
-    <img [src]="thing?.imageUrl" alt=" image du produit {{thing.name}}">
+    <img class="single-thing-image" [src]="thing?.imageUrl" alt=" image du produit {{thing.name}}">
     <div class="single-thing-info">
       <h1>{{ thing?.title }}</h1>
       <p>{{ thing?.description }}</p>
       <h2 class="single-thing-price">{{ thing?.price / 100 | currency:'EUR' }}</h2>
-
-      <button mat-raised-button primary (click)="addToCart(thing)"> Ajouter au panier </button>
+      <div class="form-group">
+        <label for="sel1">Select list (select one):</label>
+        <select  class="form-control" id="sel1">
+          <option *ngFor="let opt of thing?.lenses">{{opt}}</option>
+        </select>
+      </div>
+      <button class="btn btn-primary"  (click)="addToCart(thing)"> Ajouter au panier </button>
 
 
     </div>

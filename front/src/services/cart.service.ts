@@ -9,7 +9,8 @@ export class CartService {
   constructor() {
 
   }
-
+  orderId:string;
+  totalprice:any;
   items = [];
   addToCart(product) {
     this.items.push(product);
@@ -20,7 +21,16 @@ export class CartService {
   getItems() {
     return this.items;
   }
+getID(data:any){
+  return data.orderId;
 
+}
+getPrice(data:any){
+   return (data/100).toString();
+}
+setTotals(){
+
+}
   getTotal (items) {
     let somme = 0;
     for (let entry of items) {
@@ -32,7 +42,13 @@ export class CartService {
 }
 
   clearCart() {
+    sessionStorage.clear();
+    sessionStorage.removeItem('data');
+    sessionStorage.removeItem('totalprice');
     this.items = [];
+    this.orderId='';
+    this.totalprice=0;
+
     return this.items;
   }
 }

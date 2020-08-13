@@ -1,0 +1,2 @@
+    this.orderId=sessionStorage.getItem('data')
+    this.totalprice = sessionStorage.getItem('totalprice')

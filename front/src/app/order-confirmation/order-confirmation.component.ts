@@ -1,4 +1,4 @@
-import { Component, OnInit ,OnDestroy } from '@angular/core';
+import { Component, OnInit ,OnDestroy , Input } from '@angular/core';
 import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 import {CartService} from '../../services/cart.service';
 import {Router} from "@angular/router";
@@ -7,21 +7,23 @@ import {Router} from "@angular/router";
   selector: 'app-order-confirmation',
   templateUrl: './order-confirmation.component.html',
   styleUrls: ['./order-confirmation.component.scss']
+
 })
+
 export class OrderConfirmationComponent implements OnInit, OnDestroy {
-  totalprice :any;
-  orderId:any;
+  @Input() totalprice:any;
+  @Input() orderId:any;
 
   constructor(private router:Router,
               private cart:CartService) {
-    this.totalprice =localStorage.getItem('totalprice')
-    this.orderId = localStorage.getItem('orderid')
-    this.totalprice = this.totalprice.concat("€");
-    alert("And pada "+ localStorage.getItem('totalprice'))
+
+  this.totalprice=cart.totalprice;
+  this.orderId=cart.orderId;
+    alert("And pada "+ this.totalprice)
+    alert("ID: " + this.orderId)
   }
 clear(){
   this.cart.clearCart();
-  localStorage.clear();
   this.router.navigate(['/']);
 }
   ngOnInit(): void {
