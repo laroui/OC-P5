@@ -11,23 +11,23 @@ import {Router} from "@angular/router";
 })
 
 export class OrderConfirmationComponent implements OnInit, OnDestroy {
-  @Input() totalprice:any;
-  @Input() orderId:any;
+ totalprice:any;
+ orderId:string;
 
   constructor(private router:Router,
-              private cart:CartService) {
+              public cart:CartService) {
+this.orderId=cart.getID();
+  this.totalprice=cart.getTotal(cart.items);
 
-  this.totalprice=cart.totalprice;
-  this.orderId=cart.orderId;
-    alert("And pada "+ this.totalprice)
-    alert("ID: " + this.orderId)
+
+
+
   }
 clear(){
   this.cart.clearCart();
   this.router.navigate(['/']);
 }
   ngOnInit(): void {
-
   //reset de l'espace de stockage :)
 
 

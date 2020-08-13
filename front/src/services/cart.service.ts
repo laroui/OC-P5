@@ -17,20 +17,10 @@ export class CartService {
     localStorage.setItem('panier', JSON.stringify(this.items));
 
   }
-
   getItems() {
     return this.items;
   }
-getID(data:any){
-  return data.orderId;
 
-}
-getPrice(data:any){
-   return (data/100).toString();
-}
-setTotals(){
-
-}
   getTotal (items) {
     let somme = 0;
     for (let entry of items) {
@@ -40,16 +30,18 @@ setTotals(){
 
 
 }
-
   clearCart() {
-    sessionStorage.clear();
-    sessionStorage.removeItem('data');
-    sessionStorage.removeItem('totalprice');
+    localStorage.clear();
+    localStorage.removeItem('data');
+    localStorage.removeItem('totalprice');
     this.items = [];
-    this.orderId='';
-    this.totalprice=0;
+
 
     return this.items;
   }
+getID(){
+    return this.orderId;
+}
+
 }
 

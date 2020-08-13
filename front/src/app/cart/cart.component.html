@@ -4,8 +4,8 @@
 <p class="text-center" *ngIf="products.length <= 0 && !loading">Votre panier est vide</p>
 <div class="stuff-grid" *ngIf="products.length > 0">
 
-  <div class="left-side" [hidden]="products.length <1 ">
-    <h2>Récapitulatif de la commande </h2>
+  <div class="left-side col-sm" [hidden]="products.length <1 ">
+    <h2 class="legend">Récapitulatif de la commande </h2>
     <table>
       <thead>
       <tr>
@@ -29,42 +29,42 @@
       </tr>
       </tfoot>
 
-
-
-
-
     </table>
 
 
   </div>
 
 
-
-
-
-  <div class="right-side"  >
+  <div class="right-side col-sm"  >
     <form [formGroup]="contact" (ngSubmit)="onSubmit()" novalidate >
+      <div class="form-group">
+      <fieldset>
+        <legend class="legend">Coordonées </legend>
+
       <label for="lastname">Nom</label>
-      <input type="text" formControlName="lastname" id="lastname"/>
+      <input  type="text" formControlName="lastname" id="lastname" class="form-control"/>
       <div *ngIf="lastname.touched && !lastname.valid">Required</div>
 
       <label for="firstname">Prénom</label>
-      <input type="text" formControlName="firstname" id="firstname"/>
+      <input type="text" formControlName="firstname" id="firstname"class="form-control"/>
       <div *ngIf="firstname.touched && !firstname.valid">Required</div>
 
       <label for="email">Email</label>
-      <input formControlName="email" id="email"/>
+      <input formControlName="email" id="email" class="form-control" />
       <div *ngIf="email.touched &&!email.valid">Invalid</div>
 
+      </fieldset>
+      <fieldset>
+        <legend class="legend">Livraison </legend>
       <label for="adresse">Adresse</label>
-      <input formControlName="adresse" id="adresse"/>
+      <input formControlName="adresse" id="adresse"class="form-control"/>
       <div *ngIf="adresse.touched && !adresse.valid ">Invalide</div>
 
       <label for="ville">Ville</label>
-      <input formControlName="ville" id="ville"/>
+      <input formControlName="ville" id="ville"class="form-control"/>
       <div *ngIf="ville.touched && !ville.value ">Invalide</div>
-
-
+      </fieldset>
+      </div>
 
       <button class=" btn btn-success" type="submit" [disabled]="!contact.valid">Procéder au paiement</button>
 

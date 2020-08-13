@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../services/cart.service";
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import {Observable} from "rxjs";
+import {  Router } from '@angular/router';
 import {environment} from "../../environments/environment.prod";
 
 @Component({
@@ -12,6 +11,7 @@ import {environment} from "../../environments/environment.prod";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  orderID:string;
   items=[];
 contact:FormGroup;
   private baseUrl = environment.baseUrl;
@@ -37,36 +37,26 @@ contact:FormGroup;
 
 products =this.cartService.items;
   loading: boolean;
-
-
-
   get firstname() {
     return this.contact.get('firstname');
   }
-
   get lastname() {
     return this.contact.get('lastname');
   }
-
   get email() {
     return this.contact.get('email');
   }
-
-
   get ville() {
     return this.contact.get('ville');
   }
-
   get adresse() {
     return this.contact.get('adresse');
   }
-
   get zipcode() {
     return this.contact.get('zipcode');
   }
-
-
-  postRequest(form:FormGroup) { // POST call to API with Ajax and Fetch
+  postRequest(form:FormGroup):any {
+    // POST call to API with Ajax and Fetch
     let api_URL = this.baseUrl +"order/";
     let products :any =  []; // products: [string]
     products = JSON.stringify(this.items);
@@ -77,7 +67,6 @@ products =this.cartService.items;
       let r= this.items[ind]._id.toString();
       p.push(r);
     }
-
     //contactz componenent to match API naming
 
     let contactz = { // contact {string}
@@ -87,14 +76,11 @@ products =this.cartService.items;
       "address": this.adresse.value,
       "city":this.ville.value
     }
-
-
     let myObj = { "contact":contactz, "products":p };
-
-
+    //appel vers L'api sur l'END /order
     this.http.post(api_URL,myObj).toPromise().then((data:any) =>{
-      this.cartService.totalprice=price;
       this.cartService.orderId=data.orderId.toString();
+      this.orderID=data.orderId.toString()
       sessionStorage.setItem('data',data.orderId.toString())
       sessionStorage.setItem('totalprice', price.toString())
     })
@@ -103,9 +89,9 @@ products =this.cartService.items;
   };
 
   onSubmit() {
-
     this.postRequest(this.contact);
     this.router.navigate(['/order-confirmation']);
+
 
   }
 }
