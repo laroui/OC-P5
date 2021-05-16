@@ -12,9 +12,22 @@ export class CartService {
   orderId:string;
   totalprice:any;
   items = [];
+  items_count=0;
   addToCart(product) {
     this.items.push(product);
     localStorage.setItem('panier', JSON.stringify(this.items));
+    this.items_count=this.items_count +1;
+    window.alert('Your product has been added to the cart!'+ this.items_count);
+
+  }
+  RemoveFromCart(product) {
+    console.log('before delete'+this.items_count);
+
+    this.items.splice(product.id,1);
+    console.log(this.items_count);
+    localStorage.setItem('panier', JSON.stringify(this.items));
+    this.items_count=this.items_count -1;
+    window.alert('Your product has been removed from the cart!'+ this.items_count);
 
   }
   getItems() {

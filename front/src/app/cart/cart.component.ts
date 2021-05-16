@@ -18,7 +18,7 @@ contact:FormGroup;
   constructor(private router:Router,
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private cartService: CartService
+    public cartService: CartService
   ) { }
   ngOnInit(): void {
     this.items = this.cartService.getItems();

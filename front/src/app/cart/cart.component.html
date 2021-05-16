@@ -19,6 +19,7 @@
         <td> <img [src]="thing?.imageUrl" alt=" image du produit {{thing.name}}" height="30px" width="30px"> </td>
         <td>{{thing.name}}</td>
         <td> {{ thing.price / 100 | currency:'EUR' }} </td>
+        <td> <button class="btn-primary" (click)="this.cartService.RemoveFromCart(thing)"> </button></td>
       </tr>
       </tbody>
       <tfoot>

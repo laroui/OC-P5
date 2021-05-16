@@ -1,7 +1,11 @@
-<div class="header">
 <mat-toolbar color="primary" class="nav">
   <a routerLink="/home" class="home-button"> <img src="./assets/img/orinoco-logo-tp.png" class="ori-icon">
+
   </a>
 
-  <a routerLink="/cart" class="button fancy-button">
 
+  <a routerLink="/cart" class="button fancy-button">
+    <i class="material-icons">shopping_cart  </i>  <span class="counter"> {{this.cartService.items_count | number }}</span>   ¨Panier
+  </a>
+
+</mat-toolbar>
